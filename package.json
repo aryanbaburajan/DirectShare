@@ -4,6 +4,7 @@
   "description": "A free online file sharing service.",
   "main": "index.js",
   "dependencies": {
+    "adm-zip": "^0.5.9",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "multer": "^1.4.3"

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>File Share</title>
+</head>
+  
+<body>
+    <h1>File Share</h1>
+   
+    <p>File uploaded, you may access your file from <a id="link" href=<%- url %>>this link</a></p>
+    <p onclick="copy()"> copy link </p>
+    <script type="text/javascript">
+        function copy() {
+            navigator.clipboard.writeText(document.getElementById("link").href);
+        }
+    </script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 const path = require("path");
 const multer = require("multer");
 const app = require("express")();
+var fs = require('fs');
+var AdmZip = require("adm-zip");
 
 // View Engine Setup
 app.set("views", path.join(__dirname,"views"));
@@ -9,14 +11,20 @@ app.set("view engine", "ejs");
 // var upload = multer({ dest: "Upload_folder_name" })
 // If you do not want to use diskStorage then uncomment it
 
+function deleteFile(file){
+    fs.unlink("uploads/" + file, (err => {
+        if(err) console.log(err);
+    }));
+}
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        // Uploads is the Upload_folder_name
-        cb(null, "uploads");
+        lastFileID = Date.now() + path.extname(file.originalname);
+        cb(null, "uploads/");
     },
     filename: function (req, file, cb) {
-        lastFileID = Date.now()
-        cb(null, lastFileID + ".zip");
+        cb(null, lastFileID);
+        setTimeout(function(){deleteFile(lastFileID);}, 3600000);
     }
 });
 
@@ -36,7 +44,7 @@ app.get("/", function(req,res) {
 })
 
 app.get("/uploads/", function(req,res) {
-	res.download("uploads/" + req.query.q + ".zip");
+	res.download("uploads/" + req.query.q);
 })
     
 app.post("/uploaded", function(req, res, next) {
@@ -51,7 +59,7 @@ app.post("/uploaded", function(req, res, next) {
         }
         else {
             // SUCCESS, image successfully uploaded
-            res.send("Success, Image uploaded with the ID of " + lastFileID + "!");
+            res.render("uploaded", {url: req.get('host') + "/uploads?q=" + lastFileID});
         }
     })
 })
