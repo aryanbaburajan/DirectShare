@@ -1,14 +1,14 @@
 const path = require("path");
 const multer = require("multer");
 const app = require("express")();
-var fs = require("fs");
-var AdmZip = require("adm-zip");
+const fs = require("fs");
+const AdmZip = require("adm-zip");
 
 // View Engine Setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// var upload = multer({ dest: "Upload_folder_name" })
+// let upload = multer({ dest: "Upload_folder_name" })
 // If you do not want to use diskStorage then uncomment it
 
 function deleteFile(file) {
@@ -17,7 +17,7 @@ function deleteFile(file) {
   });
 }
 
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
   destination: function (req, file, cb) {
     lastFileID = Date.now() + path.extname(file.originalname);
     cb(null, "uploads/");
@@ -30,16 +30,16 @@ var storage = multer.diskStorage({
   },
 });
 
-var lastFileID;
+let lastFileID;
 
 // Define the maximum size for uploading
 // picture i.e. 1 MB. it is optional
-const maxSize = 1000 * 1000 * 1000;
+const maxSize = 1000 * 1000 * 1000; // 1 GB
 
-var upload = multer({
+let upload = multer({
   storage: storage,
   limits: { fileSize: maxSize },
-}).single("mypic");
+}).single("file");
 
 app.get("/", function (req, res) {
   res.render("upload");
