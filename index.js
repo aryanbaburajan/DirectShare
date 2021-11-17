@@ -59,7 +59,7 @@ app.post("/uploaded", function(req, res, next) {
         }
         else {
             // SUCCESS, image successfully uploaded
-            res.render("uploaded", {url: req.get('host') + "/uploads?q=" + lastFileID});
+            res.render("uploaded", {url: "uploads?q=" + lastFileID});
         }
     })
 })
