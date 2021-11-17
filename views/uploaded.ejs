@@ -1,19 +1,63 @@
 <!DOCTYPE html>
 <html>
-  
+
 <head>
-    <title>File Share</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>DirectShare - Directly shares your file quickly!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+     crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+     crossorigin="anonymous">
+    </script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Poppins, sans-serif;
+            color: #bbe1fa;
+            background: #1b262c;
+        }
+
+        #link {
+            display: block;
+            border: 1px solid;
+            border-radius: 20px;
+            padding: 10px 0;
+            width: 50%;
+            cursor: pointer;
+        }
+    </style>
 </head>
-  
+
 <body>
-    <h1>File Share</h1>
-   
-    <p>File uploaded, you may access your file from <a id="link" href=<%- url %>>this link</a></p>
-    <p onclick="copy()"> copy link </p>
+    <div class="container text-center py-5">
+        <h1 class="fw-bold">DirectShare</h1>
+        <p style="display:flex;justify-content:center;align-items:center;flex-direction:column;">
+            File uploaded, you may access your file from:
+            <span class="my-3" onclick="copy()" id="link" page-link=<%- url %>>
+                <%- url %>
+                <br>
+                <span class="text-white-50">Click to copy</span>
+            </span>
+            <a href="/"><button class="btn btn-primary my-3">Go back</button></a>
+        </p>
+    </div>
+    <footer class="text-center py-3 bg-dark">
+        <div id="linklist">
+            <a href="about" class="link-info">About</a>
+        </div>
+        Made with &lt;3 from
+        <a class="link-info" href="https://github.com/lines-of-codes/">lines-of-codes</a>
+        and <a class="link-info" href="https://github.com/TheDuckDev">Duckie</a>
+    </footer>
     <script type="text/javascript">
         function copy() {
-            navigator.clipboard.writeText(document.getElementById("link").href);
+            navigator.clipboard.writeText(document.getElementById("link").getAttribute("page-link"));
         }
     </script>
 </body>
+
 </html>
