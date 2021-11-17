@@ -40,7 +40,7 @@
             <span class="my-3" onclick="copy()" id="link" page-link=<%- url %>>
                 <%- url %>
                 <br>
-                <span class="text-white-50">Click to copy</span>
+                <span id="copyInstructionLabel" class="text-white-50">Click to copy</span>
             </span>
             <a href="/"><button class="btn btn-primary my-3">Go back</button></a>
         </p>
@@ -56,6 +56,11 @@
     <script type="text/javascript">
         function copy() {
             navigator.clipboard.writeText(document.getElementById("link").getAttribute("page-link"));
+            const copyInstructionLabel = document.getElementById("copyInstructionLabel");
+            copyInstructionLabel.innerText = "Copied!";
+            setTimeout(() => {
+                copyInstructionLabel.innerText = "Click to copy";
+            }, 2000);
         }
     </script>
 </body>

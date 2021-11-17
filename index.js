@@ -60,13 +60,17 @@ app.post("/uploaded", function (req, res, next) {
       res.send(err);
     } else {
       // SUCCESS, image successfully uploaded
-      res.render("uploaded", { url: "uploads?q=" + lastFileID });
+      res.render("uploaded", { url: "https://directshare.herokuapp.com/uploads?q=" + lastFileID });
     }
   });
 });
 
 app.get("/about", function (req, res) {
-    res.render("about");
+  res.render("about");
+});
+
+app.use(function (req, res) {
+  res.render("invalid");
 });
 
 // Take any port number of your choice which
