@@ -14,11 +14,68 @@
      crossorigin="anonymous">
     </script>
     <style>
+        * {
+            font-family: Poppins, cursive;
+        }
+
         body {
-            margin: 0;
-            font-family: Poppins, sans-serif;
-            color: #bbe1fa;
-            background: #1b262c;
+            background-color: #1B262C;
+            color: #3282B8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #heading {
+            text-shadow: 0px 5px #0F4C75;
+            font-size: 70px;
+        }
+
+        div {
+            text-align: center;
+            line-height: 2.25rem;
+        }
+
+        .btn {
+            background-color: #3282B8;
+            padding: 20px;
+            outline: none;
+            color: #1B262C;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            transform: translate(0px, 0px);
+            box-shadow: 0px 5px #0F4C75;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            border-radius: 50px;
+        }
+
+        a {
+            color: #3282B8 !important;
+        }
+
+        #actualfileinput {
+            display: none;
+        }
+
+        footer, .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #uploaded {
+            margin-top: 5%;
+        }
+
+        input[type="file"] {
+            display: none;
         }
 
         #link {
@@ -34,24 +91,22 @@
 
 <body>
     <div class="container text-center py-5">
-        <h1 class="fw-bold">DirectShare</h1>
-        <p style="display:flex;justify-content:center;align-items:center;flex-direction:column;">
+        <a style="text-decoration: none;" href="/"><h1 id="heading">DirectShare</h1></a>
+        <p id="uploaded" style="display:flex;justify-content:center;align-items:center;flex-direction:column;">
             File uploaded, you may access your file from:
             <span class="my-3" onclick="copy()" id="link" page-link=<%- url %>>
                 <%- url %>
                 <br>
                 <span id="copyInstructionLabel" class="text-white-50">Click to copy</span>
             </span>
-            <a href="/"><button class="btn btn-primary my-3">Go back</button></a>
+            <a href="/"><button class="btn ">Go back</button></a>
         </p>
     </div>
-    <footer class="text-center py-3 bg-dark">
-        <div id="linklist">
-            <a href="about" class="link-info">About</a>
-        </div>
-        Made with &lt;3 from
-        <a class="link-info" href="https://github.com/lines-of-codes/">lines-of-codes</a>
-        and <a class="link-info" href="https://github.com/TheDuckDev">Duckie</a>
+    <footer>
+        <a href="info" target="_blank">Info</a>, 
+        <a href="https://github.com/TheDuckDev/DirectShare" target="_blank">Github</a> | Made with &lt;3 from <a
+            href="https://github.com/lines-of-codes/" target="_blank">LinesOfCodes</a> and <a
+            href="https://github.com/TheDuckDev" target="_blank">Duckie</a>
     </footer>
     <script type="text/javascript">
         function copy() {

@@ -60,17 +60,37 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
+        .left {
+            float: left;
+            margin-left: 100px;
+        }
+
+        .right {
+            float: right;
+            margin-right: 100px;
+        }
     </style>
 </head>
 
 <body>
     <a style="text-decoration: none;" href="/"><h1 id="heading">DirectShare</h1></a>
     <div>
-        <h1>Oops...</h1>
-        <h2>Either you got the wrong link, <br> or the file was deleted. :(</h2>
-        <p>Files are deleted within 1 hour from when they were uploaded.</p>
+        <h2>About DirectShare</h2>
+        <p>DirectShare is a simple web application used for sharing files quick and easy.</p>
+        <h3>Team</h3>
 
-        <button onclick="window.location.href = 'https://directshare.herokuapp.com';">Go home</button>
+        <div class="left">
+            <img src="https://cdn.discordapp.com/avatars/576266898967363595/9a52fb77b36176a95c3e781f71ecf8f6.png?size=80" width="100px">
+            <a
+            href="https://github.com/lines-of-codes/" target="_blank"><h3>LinesOfCodes</h3></a>
+        </div>
+
+        <div class="right">
+            <img src="https://avatars.githubusercontent.com/u/51789606?v=4" width="100px">
+            <a
+            href="https://github.com/TheDuckDev" target="_blank"><h3>Duckie</h3></a>
+        </div>
     </div>
     <footer style="margin-top:40px;">
         <a href="info" target="_blank">Info</a>, 
