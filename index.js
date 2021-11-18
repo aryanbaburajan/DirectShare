@@ -1,14 +1,18 @@
 const path = require("path");
 const multer = require("multer");
-const app = require("express")();
+const express = require("express");
 const fs = require("fs");
 var pathComp= require("express-static");
 const AdmZip = require("adm-zip");
+var favicon = require('serve-favicon');
+
+const app = express()
 
 // View Engine Setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use("/views", pathComp(__dirname + '/views'));
+app.use(favicon(path.join(__dirname, 'public', 'logo.ico')));
 
 // let upload = multer({ dest: "Upload_folder_name" })
 // If you do not want to use diskStorage then uncomment it
