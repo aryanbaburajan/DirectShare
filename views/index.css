@@ -54,7 +54,8 @@ a {
 footer, .footer {
     position: absolute;
     left: 50%;
-    bottom: 10px;
-    transform: translate(-50%, -50%);
+    bottom: 0px;
+    transform: translate(-50%, -10px);
     text-align: center;
+    padding: 10px;
 }
